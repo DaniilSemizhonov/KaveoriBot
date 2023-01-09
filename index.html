@@ -43,9 +43,9 @@
 </head>
 
 <body>
-   <p><b>Ваше имя:</b><br>
-   <input type="text" size="40">
-  </p>
+   <form id="form">
+      <input type="text" name="login">
+   </form>
    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
    </div>
    <p>Just text</p> <!--Просто текст для проверки-->
@@ -108,10 +108,24 @@
    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
    usercard.appendChild(userid); //добавляем
 
+   let form = document.forms[0];
+
+   let ageElems = form.elements.age;
+
+   alert(ageElems[0]);
+
 
    //работает только в attachment menu
    // let pic = document.createElement('img'); //создаем img
    // pic.src = tg.initDataUnsafe.user.photo_url; //задаём src
    // usercard.appendChild(pic); //добавляем элемент в карточку
+</script>
+<script>
+  // form -> element
+  let login = form.login;
+
+  // element -> form
+  alert(login.form); // HTMLFormElement
+  tg.sendData(login);
 </script>
 </html>
